@@ -101,7 +101,7 @@
   
 <a name="ThreadSafety"></a>   
 ## <a name="the-systemrandom-class-and-thread-safety"></a>System.Random クラスおよびスレッドの安全性  
- 個々 のインスタンス化するのではなく<xref:System.Random>オブジェクト、1 つを作成することをお勧めします。<xref:System.Random>インスタンスにより、アプリが必要なすべての乱数を生成します。 ただし、<xref:System.Random>オブジェクトはスレッド セーフではありません。 アプリを呼び出す場合<xref:System.Random>複数のスレッドからメソッド、1 つのスレッドが一度に乱数ジェネレーターをアクセスできるようにする同期オブジェクトを使用する必要があります。 いることを確認しない場合、<xref:System.Random>オブジェクトがスレッド セーフな方法でアクセスされる、ランダムな数値を返すメソッドを呼び出すには 0 が返されます。  
+ 個々の<xref:System.Random>オブジェクトをインスタンス化するのではなく、同一のインスタンスからアプリケーションが必要とするすべての乱数を生成することをお勧めします。 ただし、<xref:System.Random>オブジェクトはスレッド セーフではありません。 アプリを呼び出す場合<xref:System.Random>複数のスレッドからメソッド、1 つのスレッドが一度に乱数ジェネレーターをアクセスできるようにする同期オブジェクトを使用する必要があります。 いることを確認しない場合、<xref:System.Random>オブジェクトがスレッド セーフな方法でアクセスされる、ランダムな数値を返すメソッドを呼び出すには 0 が返されます。  
   
  次の例では、c# 使用[lock ステートメント](~/docs/csharp/language-reference/keywords/lock-statement.md)および Visual Basic [SyncLock ステートメント](~/docs/visual-basic/language-reference/statements/synclock-statement.md)を 1 つ乱数ジェネレーターにスレッド セーフ方式で 11 のスレッドによってアクセスすることを確認します。 各スレッドで 200万の乱数を生成し生成されたランダムな数字の数をカウント、その合計を計算し、実行が完了すると、すべてのスレッドの合計を更新します。  
   
